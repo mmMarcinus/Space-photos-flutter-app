@@ -33,7 +33,7 @@ class NasaAPI extends ChangeNotifier {
     } catch (err) {
       print(err);
     }
-    await Future.delayed(Duration(milliseconds: 1500));
+    //await Future.delayed(Duration(milliseconds: 1500));
   }
 
   Future<void> getPFMRdata() async {

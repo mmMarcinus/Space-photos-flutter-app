@@ -1,12 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
-class UserScreen extends StatelessWidget {
-  const UserScreen({Key? key}) : super(key: key);
+class UserDataScreen extends StatelessWidget {
+  bool loggedIn;
+  UserDataScreen(this.loggedIn, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('for later:DD'),
-    );
+    return SafeArea(
+        child: loggedIn
+            ? CupertinoButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
+                child: Text('Log out'),
+              )
+            : Text('You are not logged in yet!'));
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83492564014",
+    "project_id": "flutter-space-app",
+    "storage_bucket": "flutter-space-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83492564014:android:9780dd0c8ffe3530f1c3bf",
+        "android_client_info": {
+          "package_name": "com.szulc.space_pictures_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83492564014-9s24n0ipc01h7tp9d3f2iirs95kmfgbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoEw44tLnLz2BJGZdrKaiwB6xbO9FWInY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83492564014-9s24n0ipc01h7tp9d3f2iirs95kmfgbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

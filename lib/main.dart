@@ -3,11 +3,15 @@ import 'package:provider/provider.dart';
 import 'package:space_pictures_app/providers/nasa_apis.dart';
 import 'package:space_pictures_app/screens/APOTD_screen.dart';
 import 'package:space_pictures_app/screens/PFMR_screen.dart';
+import 'package:space_pictures_app/screens/chosen_day_APOTD_screen.dart';
 import 'package:space_pictures_app/screens/main_screen.dart';
 import 'package:space_pictures_app/screens/signing_screen.dart';
 import 'package:space_pictures_app/widgets/home_screen_widgets/apotd_button.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -33,6 +37,7 @@ class MyApp extends StatelessWidget {
               APOTD_Screen.routeName: (ctx) => const APOTD_Screen(),
               PFMR_Screen.routeName: (ctx) => const PFMR_Screen(),
               SignUpScreen.routeName: (ctx) => const SignUpScreen(),
+              ChosenDayAPODTSCreen.routeName: (ctx) => ChosenDayAPODTSCreen(),
             },
           );
         });

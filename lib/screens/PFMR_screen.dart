@@ -97,14 +97,29 @@ class _MarsPhotoState extends State<MarsPhoto> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Container(
-              width: double.infinity,
-              child: InteractiveViewer(
-                  child: Image.network(
-                widget.img_src,
-                fit: BoxFit.fill,
-              )))),
+        borderRadius: BorderRadius.circular(15),
+        child: Container(
+          width: double.infinity,
+          child: InteractiveViewer(
+            child: Image.network(
+              widget.img_src,
+              fit: BoxFit.fill,
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: LinearProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
