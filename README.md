@@ -1,6 +1,6 @@
 # space_pictures_app
 
-A new Flutter project.
+App that shows you nasa Astronomy picture of the day and much more
 
 ## Getting Started
 
