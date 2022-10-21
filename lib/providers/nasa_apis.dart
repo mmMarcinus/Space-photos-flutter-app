@@ -13,8 +13,8 @@ class NasaAPI extends ChangeNotifier {
   PFMR? pfmr;
   NasaAPI(@required this.date);
 
-  String getAPODurl() {
-    String dateString = "${date.year}-${date.month}-${date.day}";
+  String getAPODurl(DateTime dateUrl) {
+    String dateString = "${dateUrl.year}-${dateUrl.month}-${dateUrl.day}";
     return Uri.encodeFull(
         'https://api.nasa.gov/planetary/apod?date=$dateString&hd=true&api_key=$api_key');
   }
@@ -24,8 +24,8 @@ class NasaAPI extends ChangeNotifier {
         'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=$api_key');
   }
 
-  Future<void> getAPODdata() async {
-    Uri url = Uri.parse(getAPODurl());
+  Future<void> getAPODdata(DateTime dateApod) async {
+    Uri url = Uri.parse(getAPODurl(dateApod));
     try {
       http.Response response = await http.get(url);
       data = response.body;

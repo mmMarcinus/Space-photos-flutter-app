@@ -39,63 +39,69 @@ class _ChosenDayAPODTSCreenState extends State<ChosenDayAPODTSCreen> {
       appBar: CupertinoNavigationBar(
         middle: Text(title),
       ),
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            CupertinoButton(
-              child: Text('Choose your day'),
-              onPressed: () => modalBottomDatePicker(context),
-            ),
-            Spacer(
-              flex: 1,
-            ),
-            date == null
-                ? Text(
-                    'You dint choose your day yet!',
-                    textAlign: TextAlign.center,
-                  )
-                : FutureBuilder(
-                    future: apodProvider.getAPODdata().then((_) {
-                      apodUrl = apodProvider.apod!.imageUrl;
-                      apodInfo = apodProvider.apod!.imageInfo;
-                    }),
-                    builder: (ctx, asyncSnapshot) {
-                      return asyncSnapshot == AsyncSnapshot.waiting()
-                          ? CircularProgressIndicator()
-                          : InteractiveViewer(
-                              minScale: 0.6,
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Image.network(
-                                  apodUrl,
-                                  fit: BoxFit.fill,
-                                  loadingBuilder: (BuildContext context,
-                                      Widget child,
-                                      ImageChunkEvent? loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Center(
-                                      child: LinearProgressIndicator(
-                                        value: loadingProgress
-                                                    .expectedTotalBytes !=
-                                                null
-                                            ? loadingProgress
-                                                    .cumulativeBytesLoaded /
-                                                loadingProgress
-                                                    .expectedTotalBytes!
-                                            : null,
-                                      ),
-                                    );
-                                  },
+      body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <
+          Widget>[
+        CupertinoButton(
+          child: Text('Choose your day'),
+          onPressed: () => modalBottomDatePicker(context),
+        ),
+        Spacer(
+          flex: 1,
+        ),
+        date == null
+            ? Text(
+                'You dint choose your day yet!',
+                textAlign: TextAlign.center,
+              )
+            : FutureBuilder(
+                future: apodProvider.getAPODdata(date!).then((_) {
+                  apodUrl = apodProvider.apod!.imageUrl;
+                  apodInfo = apodProvider.apod!.imageInfo;
+                  //print(apodUrl);
+                }),
+                builder: (ctx, asyncSnapshot) {
+                  print(apodUrl);
+                  return asyncSnapshot == AsyncSnapshot.waiting()
+                      ? CircularProgressIndicator()
+                      : apodUrl != ''
+                          ? Container(
+                              height: MediaQuery.of(context).size.height - 120,
+                              child: InteractiveViewer(
+                                minScale: 0.6,
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Image.network(
+                                    loadingBuilder: (BuildContext context,
+                                        Widget child,
+                                        ImageChunkEvent? loadingProgress) {
+                                      if (loadingProgress == null) return child;
+                                      return Center(
+                                        child: LinearProgressIndicator(
+                                          value: loadingProgress
+                                                      .expectedTotalBytes !=
+                                                  null
+                                              ? loadingProgress
+                                                      .cumulativeBytesLoaded /
+                                                  loadingProgress
+                                                      .expectedTotalBytes!
+                                              : null,
+                                        ),
+                                      );
+                                    },
+                                    apodUrl,
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               ),
-                            );
-                    }),
-            Spacer(
-              flex: 3,
-            ),
-          ]),
+                            )
+                          : LinearProgressIndicator();
+                }),
+        Spacer(
+          flex: 3,
+        ),
+      ]),
     );
   }
 }

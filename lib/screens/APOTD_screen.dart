@@ -27,7 +27,7 @@ class _APOTD_ScreenState extends State<APOTD_Screen> {
         todayDate.year.toString();
     //final apiData = apodProvider.getAPODdata();
     return FutureBuilder(
-      future: apodProvider.getAPODdata().then((_) {
+      future: apodProvider.getAPODdata(todayDate).then((_) {
         apodUrl = apodProvider.apod!.imageUrl;
         apodInfo = apodProvider.apod!.imageInfo;
       }),
