@@ -15,12 +15,66 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+// Future<void> backgroundCallback(Uri uri) async {
+//   if (uri.host == 'updatecounter') {
+//     int counter = 0;
+//     await HomeWidget.getWidgetData<int>('_counter', defaultValue: 0)
+//         .then((value) {
+//       counter = value!;
+//       counter++;
+//     });
+//     await HomeWidget.saveWidgetData<int>('_counter', counter);
+//     await HomeWidget.updateWidget(
+//         name: 'AppWidgetProvider', iOSName: 'AppWidgetProvider');
+//   }
+// }
+
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    int _counter = 0;
+
+    // void loadData() async {
+    //   await HomeWidget.getWidgetData<int>('_counter', defaultValue: 0)
+    //       .then((value) {
+    //     _counter = value!;
+    //   });
+    //   setState(() {});
+    // }
+
+    // @override
+    // void initState() {
+    //   super.initState();
+    //   HomeWidget.widgetClicked.listen((Uri? uri) => loadData());
+    //   loadData(); // This will load data from widget every time app is opened
+    // }
+
+    // Future<void> updateAppWidget() async {
+    //   await HomeWidget.saveWidgetData<int>('_counter', _counter);
+    //   await HomeWidget.updateWidget(
+    //       name: 'AppWidgetProvider', iOSName: 'AppWidgetProvider');
+    // }
+
+    // void _incrementCounter() {
+    //   setState(() {
+    //     // This call to setState tells the Flutter framework that something has
+    //     // changed in this State, which causes it to rerun the build method below
+    //     // so that the display can reflect the updated values. If we changed
+    //     // _counter without calling setState(), then the build method would not be
+    //     // called again, and so nothing would appear to happen.
+    //     _counter++;
+    //   });
+    //   updateAppWidget();
+    // }
+
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<NasaAPI>(

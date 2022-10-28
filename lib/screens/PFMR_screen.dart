@@ -30,6 +30,7 @@ class _PFMR_ScreenState extends State<PFMR_Screen> {
           pfmr = pfmrProvider.pfmr;
           photosLength = pfmr!.photos.length;
           drawNumbers(photosLength);
+          print(pfmr!.photos[3]);
         }),
         builder: (ctx, dataSnapshot) {
           return Scaffold(
