@@ -1,9 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:space_pictures_app/models/pfmrModel.dart';
 import 'package:space_pictures_app/providers/nasa_apis.dart';
@@ -22,7 +19,7 @@ int n1 = 0, n2 = 1, n3 = 2;
 class _PFMR_ScreenState extends State<PFMR_Screen> {
   @override
   Widget build(BuildContext context) {
-    PFMR? pfmr = null;
+    PFMR? pfmr;
     int photosLength = 0;
     final pfmrProvider = Provider.of<NasaAPI>(context);
     return FutureBuilder(
@@ -37,9 +34,10 @@ class _PFMR_ScreenState extends State<PFMR_Screen> {
             body: dataSnapshot.connectionState == ConnectionState.done
                 ? SafeArea(
                     child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       child: Column(
-                        children: [
+                        children: <Widget>[
+                          const Text('TRZEBA CALE OGARNAC JESZCZE'),
                           const SizedBox(
                             height: 15,
                           ),
@@ -48,10 +46,7 @@ class _PFMR_ScreenState extends State<PFMR_Screen> {
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: const CircleAvatar(
-                                radius: 30,
-                                child: Icon(Icons.arrow_back_ios_new),
-                              ),
+                              child: const Icon(Icons.arrow_back_ios_new),
                             ),
                           ),
                           const SizedBox(
@@ -73,10 +68,10 @@ class _PFMR_ScreenState extends State<PFMR_Screen> {
                           color: Colors.deepPurple[300],
                           size: 68,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
-                        CircularProgressIndicator(),
+                        const CircularProgressIndicator(),
                       ],
                     ),
                   ),
@@ -99,7 +94,7 @@ class _MarsPhotoState extends State<MarsPhoto> {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: InteractiveViewer(
             child: Image.network(

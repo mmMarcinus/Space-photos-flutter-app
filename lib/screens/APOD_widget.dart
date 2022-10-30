@@ -20,18 +20,7 @@ class _APODWidgetState extends State<APODWidget> {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: <Widget>[
-                  const SizedBox(height: 30),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'ASTRONOMY PICTURE OF THE DAY:',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Colors.black87),
-                    ),
-                  ),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ClipRRect(
@@ -88,28 +77,40 @@ class _APODWidgetState extends State<APODWidget> {
           );
         } else {
           return SafeArea(
-              child: InteractiveViewer(
-            minScale: 0.6,
-            child: Container(
-              width: double.infinity,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(15)),
-              child: Image.network(
-                widget.apodUrl,
-                fit: BoxFit.fill,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: LinearProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
-                          : null,
+              child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                const SizedBox(
+                  height: 10,
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: InteractiveViewer(
+                    minScale: 0.6,
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Image.network(
+                        widget.apodUrl,
+                        fit: BoxFit.fill,
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent? loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(
+                            child: LinearProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                ),
+              ],
             ),
           ));
         }

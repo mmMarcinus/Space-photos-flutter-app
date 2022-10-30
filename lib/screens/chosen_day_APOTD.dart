@@ -24,17 +24,6 @@ class _ChosenDayAPODTState extends State<ChosenDayAPODT> {
     });
   }
 
-  //
-  //
-  //
-  //
-  //
-  //  A POTEM WIDGETY :D
-  //
-  //
-  //
-  //
-
   DateTime? date;
   final String title = 'Date not chosen';
   @override
@@ -61,35 +50,35 @@ class _ChosenDayAPODTState extends State<ChosenDayAPODT> {
                             height: 20,
                           ),
                           apodUrl != ''
-                              ? InteractiveViewer(
-                                  minScale: 0.6,
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    child: Image.network(
-                                      loadingBuilder: (BuildContext context,
-                                          Widget child,
-                                          ImageChunkEvent? loadingProgress) {
-                                        if (loadingProgress == null) {
-                                          return child;
-                                        }
-                                        return Center(
-                                          child: LinearProgressIndicator(
-                                            value: loadingProgress
-                                                        .expectedTotalBytes !=
-                                                    null
-                                                ? loadingProgress
-                                                        .cumulativeBytesLoaded /
-                                                    loadingProgress
-                                                        .expectedTotalBytes!
-                                                : null,
-                                          ),
-                                        );
-                                      },
-                                      apodUrl,
-                                      fit: BoxFit.fill,
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: InteractiveViewer(
+                                    minScale: 0.6,
+                                    child: SizedBox(
+                                      width: double.infinity,
+                                      child: Image.network(
+                                        loadingBuilder: (BuildContext context,
+                                            Widget child,
+                                            ImageChunkEvent? loadingProgress) {
+                                          if (loadingProgress == null) {
+                                            return child;
+                                          }
+                                          return Center(
+                                            child: LinearProgressIndicator(
+                                              value: loadingProgress
+                                                          .expectedTotalBytes !=
+                                                      null
+                                                  ? loadingProgress
+                                                          .cumulativeBytesLoaded /
+                                                      loadingProgress
+                                                          .expectedTotalBytes!
+                                                  : null,
+                                            ),
+                                          );
+                                        },
+                                        apodUrl,
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   ),
                                 )
