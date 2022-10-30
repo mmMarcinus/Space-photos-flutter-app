@@ -7,6 +7,6 @@ class SignUpScreen extends StatelessWidget {
   static const routeName = '/singup';
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

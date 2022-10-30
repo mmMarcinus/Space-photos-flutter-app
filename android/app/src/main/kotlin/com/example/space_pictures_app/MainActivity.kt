@@ -1,4 +1,4 @@
-package com.example.space_pictures_app
+package com.szulc.space_pictures_app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,7 +1,4 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:space_pictures_app/screens/APOTD_screen.dart';
 
 class APOTDButton extends StatelessWidget {
@@ -17,7 +14,22 @@ class APOTDButton extends StatelessWidget {
         width: double.infinity,
         height: 180,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.pink[300]),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(-1, 3), // changes position of shadow
+              ),
+            ],
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xfff8f9fa),
+            border: Border.all(color: const Color(0xff212529), width: 1)
+            // boxShadow: [
+            //   BoxShadow(
+            //       color: const Color(0xff2e294e), spreadRadius: 2, blurRadius: 0),
+            // ],
+            ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -25,10 +37,12 @@ class APOTDButton extends StatelessWidget {
               width: 130,
               height: 130,
               decoration: BoxDecoration(
-                  color: Colors.deepPurple[300],
-                  borderRadius: BorderRadius.circular(15)),
-              child: Lottie.network(
-                  'https://assets8.lottiefiles.com/packages/lf20_4tg3fb79.json'),
+                  //color: const Color(0xff2e294e),
+                  borderRadius: BorderRadius.circular(8)),
+              child: Image.asset(
+                'lib/assets/rocket.png',
+                fit: BoxFit.cover,
+              ),
             ),
             RotationTransition(
               turns: AlwaysStoppedAnimation(0 / 360),
@@ -38,7 +52,7 @@ class APOTDButton extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black87),
+                      color: const Color(0xff212529)),
                 ),
               ),
             ),

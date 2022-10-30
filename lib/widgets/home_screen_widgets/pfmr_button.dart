@@ -1,7 +1,4 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:space_pictures_app/screens/PFMR_screen.dart';
 
 class PFMRButton extends StatelessWidget {
@@ -17,7 +14,17 @@ class PFMRButton extends StatelessWidget {
         width: double.infinity,
         height: 180,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.pink[200]),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(-1, 3), // changes position of shadow
+              ),
+            ],
+            border: Border.all(width: 1, color: const Color(0xff212529)),
+            borderRadius: BorderRadius.circular(8),
+            color: const Color(0xfff8f9fa)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -25,10 +32,15 @@ class PFMRButton extends StatelessWidget {
               width: 130,
               height: 130,
               decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(15)),
-              child: Lottie.network(
-                  'https://assets6.lottiefiles.com/private_files/lf30_whmmdqnm.json'),
+                borderRadius: BorderRadius.circular(8),
+                //border: Border.all(width: 1, color: const Color(0xff212529)),
+              ),
+              child: Image.asset(
+                'lib/assets/mar.png',
+                fit: BoxFit.cover,
+              ),
+              // child: Lottie.network(
+              //     'https://assets6.lottiefiles.com/private_files/lf30_whmmdqnm.json'),
             ),
             RotationTransition(
               turns: AlwaysStoppedAnimation(0 / 360),
@@ -38,7 +50,7 @@ class PFMRButton extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black87),
+                      color: const Color(0xff212529)),
                 ),
               ),
             ),

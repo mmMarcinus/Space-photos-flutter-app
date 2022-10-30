@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:space_pictures_app/providers/nasa_apis.dart';
 import 'package:space_pictures_app/screens/APOTD_screen.dart';
 import 'package:space_pictures_app/screens/PFMR_screen.dart';
-import 'package:space_pictures_app/screens/chosen_day_APOTD_screen.dart';
+import 'package:space_pictures_app/screens/chosen_day_APOTD.dart';
 import 'package:space_pictures_app/screens/main_screen.dart';
 import 'package:space_pictures_app/screens/signing_screen.dart';
 import 'package:space_pictures_app/widgets/home_screen_widgets/apotd_button.dart';
@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    int _counter = 0;
+    int counter = 0;
 
     // void loadData() async {
     //   await HomeWidget.getWidgetData<int>('_counter', defaultValue: 0)
@@ -84,14 +84,13 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(
-              primarySwatch: Colors.deepPurple,
+              primarySwatch: Colors.purple,
             ),
             home: const MainScreen(),
             routes: {
               APOTD_Screen.routeName: (ctx) => const APOTD_Screen(),
               PFMR_Screen.routeName: (ctx) => const PFMR_Screen(),
               SignUpScreen.routeName: (ctx) => const SignUpScreen(),
-              ChosenDayAPODTSCreen.routeName: (ctx) => ChosenDayAPODTSCreen(),
             },
           );
         });
