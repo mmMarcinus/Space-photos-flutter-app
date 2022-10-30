@@ -13,6 +13,11 @@ class APOTD_Screen extends StatefulWidget {
   static const routeName = '/apotd';
 }
 
+//
+// TODO ZROBIC APOD POD TEGO SCREENA A POTEM WIDGETY
+//
+//
+
 class _APOTD_ScreenState extends State<APOTD_Screen> {
   final DateTime todayDate = DateTime.now();
   @override
