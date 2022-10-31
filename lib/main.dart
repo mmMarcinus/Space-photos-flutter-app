@@ -3,14 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:space_pictures_app/providers/nasa_apis.dart';
 import 'package:space_pictures_app/screens/APOTD_screen.dart';
 import 'package:space_pictures_app/screens/PFMR_screen.dart';
-import 'package:space_pictures_app/screens/chosen_day_APOTD.dart';
 import 'package:space_pictures_app/screens/main_screen.dart';
 import 'package:space_pictures_app/screens/signing_screen.dart';
-import 'package:space_pictures_app/widgets/home_screen_widgets/apotd_button.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
 }

@@ -10,7 +10,12 @@ class ChosenDayAPODT extends StatefulWidget {
   State<ChosenDayAPODT> createState() => _ChosenDayAPODTState();
 }
 
-class _ChosenDayAPODTState extends State<ChosenDayAPODT> {
+class _ChosenDayAPODTState extends State<ChosenDayAPODT>
+    with AutomaticKeepAliveClientMixin<ChosenDayAPODT> {
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
   void modalBottomDatePicker(BuildContext context) {
     showModalBottomSheet(
         context: context,
