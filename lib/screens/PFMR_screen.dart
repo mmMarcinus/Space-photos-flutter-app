@@ -1,9 +1,11 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:space_pictures_app/models/pfmrModel.dart';
 import 'package:space_pictures_app/providers/nasa_apis.dart';
+import 'package:space_pictures_app/widgets/PFMRwidgets/choose_rover_button.dart';
 
 class PFMR_Screen extends StatefulWidget {
   const PFMR_Screen({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class PFMR_Screen extends StatefulWidget {
 }
 
 int n1 = 0, n2 = 1, n3 = 2;
+List<String> rovers = <String>['curiosity', 'opportunity', 'spirit'];
 
 class _PFMR_ScreenState extends State<PFMR_Screen> {
   @override
@@ -31,30 +34,67 @@ class _PFMR_ScreenState extends State<PFMR_Screen> {
         }),
         builder: (ctx, dataSnapshot) {
           return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(CupertinoIcons.back, color: Color(0xff212529)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              title: const Text(
+                'M R F',
+                style: TextStyle(color: Color(0xff212529)),
+              ),
+              centerTitle: true,
+              backgroundColor: const Color(0xfff8f9fa),
+            ),
             body: dataSnapshot.connectionState == ConnectionState.done
                 ? SafeArea(
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          const Text('TRZEBA CALE OGARNAC JESZCZE'),
                           const SizedBox(
-                            height: 15,
+                            height: 30,
                           ),
-                          Center(
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Icon(Icons.arrow_back_ios_new),
+                          const Center(
+                            child: Text(
+                              'Pick your rover',
+                              style: TextStyle(fontSize: 20),
                             ),
                           ),
                           const SizedBox(
-                            height: 15,
+                            height: 30,
                           ),
-                          MarsPhoto(pfmr!.photos[n1]['img_src']),
-                          MarsPhoto(pfmr!.photos[n2]['img_src']),
-                          MarsPhoto(pfmr!.photos[n3]['img_src']),
+                          ChooseRoverButton(rovers[0]),
+                          ChooseRoverButton(rovers[1]),
+                          ChooseRoverButton(rovers[2]),
+                          // ChooseRoverButton(),
+                          // ChooseRoverButton(),
+
+                          // for (String rover in rovers) {
+                          //     ChooseRoverButton()
+                          // }
+                          // const SizedBox(
+                          //   height: 15,
+                          // ),
+                          // Center(
+                          //   child: TextButton(
+                          //     onPressed: () {
+                          //       setState(() {});
+                          //       //Navigator.of(context).pop();
+                          //     },
+                          //     child: const Icon(Icons.arrow_back_ios_new),
+                          //   ),
+                          // ),
+                          // const SizedBox(
+                          //   height: 15,
+                          // ),
+                          // MarsPhoto(pfmr!.photos[n1]['img_src']),
+                          // MarsPhoto(pfmr!.photos[n2]['img_src']),
+                          // MarsPhoto(pfmr!.photos[n3]['img_src']),
                         ],
                       ),
                     ),

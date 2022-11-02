@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:space_pictures_app/screens/home_screen.dart';
 import 'package:space_pictures_app/screens/user_screen.dart';
 
@@ -46,13 +47,21 @@ class _MainScreenState extends State<MainScreen> {
                   destinations: const <NavigationDestination>[
                     NavigationDestination(
                       icon: Icon(
-                        Icons.rocket,
+                        Icons.rocket_rounded,
                         color: Color(0xff212529),
                       ),
+
+                      // icon: FaIcon(
+                      //   FontAwesomeIcons.rocket,
+                      //   color: Color(0xff212529),
+                      // ),
                       label: 'Home',
                     ),
                     NavigationDestination(
-                      icon: Icon(Icons.person, color: Color(0xff212529)),
+                      icon: FaIcon(
+                        FontAwesomeIcons.userAstronaut,
+                        color: Color(0xff212529),
+                      ),
                       label: 'User',
                     )
                   ]),

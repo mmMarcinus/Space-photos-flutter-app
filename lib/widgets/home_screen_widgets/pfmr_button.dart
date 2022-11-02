@@ -19,7 +19,7 @@ class PFMRButton extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(-1, 3), // changes position of shadow
+                offset: const Offset(-1, 3), // changes position of shadow
               ),
             ],
             border: Border.all(width: 1, color: const Color(0xff212529)),
@@ -42,15 +42,15 @@ class PFMRButton extends StatelessWidget {
               // child: Lottie.network(
               //     'https://assets6.lottiefiles.com/private_files/lf30_whmmdqnm.json'),
             ),
-            RotationTransition(
+            const RotationTransition(
               turns: AlwaysStoppedAnimation(0 / 360),
               child: Center(
-                child: const Text(
-                  'Photos of \nMars',
+                child: Text(
+                  'Mars rover \nPhotos',
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xff212529)),
+                      color: Color(0xff212529)),
                 ),
               ),
             ),

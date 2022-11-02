@@ -68,17 +68,18 @@ class _ChosenDayAPODTState extends State<ChosenDayAPODT>
                                           if (loadingProgress == null) {
                                             return child;
                                           }
-                                          return Center(
-                                            child: LinearProgressIndicator(
-                                              value: loadingProgress
-                                                          .expectedTotalBytes !=
-                                                      null
-                                                  ? loadingProgress
-                                                          .cumulativeBytesLoaded /
-                                                      loadingProgress
-                                                          .expectedTotalBytes!
-                                                  : null,
-                                            ),
+                                          return Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.grey[300],
+                                                gradient: const LinearGradient(
+                                                    colors: <Color>[
+                                                      Colors.grey,
+                                                      Colors.white
+                                                    ]),
+                                                borderRadius:
+                                                    BorderRadius.circular(15)),
+                                            height: 400,
+                                            width: double.infinity,
                                           );
                                         },
                                         apodUrl,
@@ -87,7 +88,18 @@ class _ChosenDayAPODTState extends State<ChosenDayAPODT>
                                     ),
                                   ),
                                 )
-                              : const LinearProgressIndicator(),
+                              : Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      gradient:
+                                          const LinearGradient(colors: <Color>[
+                                        Colors.grey,
+                                        Colors.white,
+                                      ]),
+                                      borderRadius: BorderRadius.circular(15)),
+                                  height: 400,
+                                  width: double.infinity,
+                                ),
                           CupertinoButton(
                             child: const Text('Choose your day'),
                             onPressed: () => modalBottomDatePicker(context),

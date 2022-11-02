@@ -21,7 +21,7 @@ class NasaAPI extends ChangeNotifier {
 
   String getPFMRurl() {
     return Uri.encodeFull(
-        'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=$api_key');
+        'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=navcam&api_key=$api_key');
   }
 
   Future<void> getAPODdata(DateTime dateApod) async {
@@ -43,7 +43,7 @@ class NasaAPI extends ChangeNotifier {
       data = response.body;
       pfmr = PFMR.fromJson(convert.jsonDecode(data!));
       // print(pfmr!.photos.length);
-      // print(pfmr!.photos[2]['img_src']);
+      print(pfmr!.photos);
     } catch (err) {
       print(err);
     }
