@@ -40,17 +40,19 @@ class _APODWidgetState extends State<APODWidget> {
                                       ImageChunkEvent? loadingProgress) {
                                     if (loadingProgress == null) return child;
                                     return Center(
-                                      child: LinearProgressIndicator(
-                                        value: loadingProgress
-                                                    .expectedTotalBytes !=
-                                                null
-                                            ? loadingProgress
-                                                    .cumulativeBytesLoaded /
-                                                loadingProgress
-                                                    .expectedTotalBytes!
-                                            : null,
-                                      ),
-                                    );
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            child: Container(
+                                              width: 400,
+                                              height: 400,
+                                              decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                      colors: <Color>[
+                                                    Colors.grey,
+                                                    Colors.grey[400]!
+                                                  ])),
+                                            )));
                                   },
                                 ),
                               ),
@@ -98,13 +100,18 @@ class _APODWidgetState extends State<APODWidget> {
                             ImageChunkEvent? loadingProgress) {
                           if (loadingProgress == null) return child;
                           return Center(
-                            child: LinearProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes!
-                                  : null,
-                            ),
-                          );
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Container(
+                                    width: 400,
+                                    height: 400,
+                                    decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                            colors: <Color>[
+                                          Colors.grey,
+                                          Colors.grey[200]!
+                                        ])),
+                                  )));
                         },
                       ),
                     ),

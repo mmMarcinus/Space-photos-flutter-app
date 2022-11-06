@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:space_pictures_app/screens/PFMR_screen.dart';
+import 'package:space_pictures_app/screens/choose_PFMR_screen.dart';
 
 class PFMRButton extends StatelessWidget {
   const PFMRButton({Key? key}) : super(key: key);

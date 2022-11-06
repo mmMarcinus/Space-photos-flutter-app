@@ -68,19 +68,21 @@ class _ChosenDayAPODTState extends State<ChosenDayAPODT>
                                           if (loadingProgress == null) {
                                             return child;
                                           }
-                                          return Container(
-                                            decoration: BoxDecoration(
-                                                color: Colors.grey[300],
-                                                gradient: const LinearGradient(
-                                                    colors: <Color>[
-                                                      Colors.grey,
-                                                      Colors.white
-                                                    ]),
-                                                borderRadius:
-                                                    BorderRadius.circular(15)),
-                                            height: 400,
-                                            width: double.infinity,
-                                          );
+                                          return Center(
+                                              child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                  child: Container(
+                                                    width: 400,
+                                                    height: 400,
+                                                    decoration: BoxDecoration(
+                                                        gradient:
+                                                            LinearGradient(
+                                                                colors: <Color>[
+                                                          Colors.grey,
+                                                          Colors.grey[400]!
+                                                        ])),
+                                                  )));
                                         },
                                         apodUrl,
                                         fit: BoxFit.fill,
@@ -88,18 +90,19 @@ class _ChosenDayAPODTState extends State<ChosenDayAPODT>
                                     ),
                                   ),
                                 )
-                              : Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey[300],
-                                      gradient:
-                                          const LinearGradient(colors: <Color>[
-                                        Colors.grey,
-                                        Colors.white,
-                                      ]),
-                                      borderRadius: BorderRadius.circular(15)),
-                                  height: 400,
-                                  width: double.infinity,
-                                ),
+                              : Center(
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Container(
+                                        width: 400,
+                                        height: 400,
+                                        decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                                colors: <Color>[
+                                              Colors.grey,
+                                              Colors.grey[400]!
+                                            ])),
+                                      ))),
                           CupertinoButton(
                             child: const Text('Choose your day'),
                             onPressed: () => modalBottomDatePicker(context),
