@@ -11,7 +11,14 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "XXX",
+      appId: "XXX",
+      messagingSenderId: "XXX",
+      projectId: "XXX",
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -51,8 +58,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(
-              primarySwatch: Colors.purple,
-            ),
+                primarySwatch: Colors.purple, textTheme: const TextTheme()),
             home: const MainScreen(),
             routes: {
               APOTD_Screen.routeName: (ctx) => const APOTD_Screen(),

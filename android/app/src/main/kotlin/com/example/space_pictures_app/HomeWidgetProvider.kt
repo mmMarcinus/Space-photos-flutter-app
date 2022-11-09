@@ -10,6 +10,8 @@ import es.antonborri.home_widget.HomeWidgetLaunchIntent
 import es.antonborri.home_widget.HomeWidgetProvider
 
 class AppWidgetProvider : HomeWidgetProvider() {
+    //var imageView   = findViewById(R.id.imageView);
+    //print("message")
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray, widgetData: SharedPreferences) {
         appWidgetIds.forEach { widgetId ->
             val views = RemoteViews(context.packageName, R.layout.home_widget_layout).apply {

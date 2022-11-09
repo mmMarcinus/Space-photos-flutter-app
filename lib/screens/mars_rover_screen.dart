@@ -43,10 +43,13 @@ class MarsRoverScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.rocket_launch_rounded,
-                          color: Colors.deepPurple[300],
-                          size: 68,
+                        Hero(
+                          tag: roverName,
+                          child: Icon(
+                            Icons.rocket_launch_rounded,
+                            color: Colors.deepPurple[300],
+                            size: 68,
+                          ),
                         ),
                         const SizedBox(
                           height: 30,
@@ -87,10 +90,10 @@ class MarsRoverScreen extends StatelessWidget {
                         const Padding(
                           padding:
                               EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-                          child: Text('Navigation camera:'),
+                          child: Text('Navigation camera:',
+                              style: TextStyle(fontSize: 22)),
                         ),
-                        MarsPhoto(
-                            pfmrRearHazardAvoidanceCamera!.photos[1]['img_src'])
+                        MarsPhoto(pfmrNavcam!.photos[0]['img_src'])
                       ],
                     ),
                   ),
@@ -123,13 +126,17 @@ class _MarsPhotoState extends State<MarsPhoto> {
                   ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Center(
-                  child: LinearProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
-                        : null,
-                  ),
-                );
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Container(
+                          width: 400,
+                          height: 400,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: <Color>[
+                            Colors.grey,
+                            Colors.grey[400]!
+                          ])),
+                        )));
               },
             ),
           ),

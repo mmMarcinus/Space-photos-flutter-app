@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:space_pictures_app/providers/nasa_apis.dart';
 import 'package:provider/provider.dart';
-import 'package:space_pictures_app/screens/APOD_widget.dart';
-import 'package:space_pictures_app/screens/chosen_day_APOTD.dart';
+import 'package:space_pictures_app/widgets/APODwidgets/APOD_widget.dart';
+import 'package:space_pictures_app/widgets/APODwidgets/chosen_day_APOTD_widget.dart';
 
 class APOTD_Screen extends StatefulWidget {
   const APOTD_Screen({Key? key}) : super(key: key);
@@ -85,6 +85,9 @@ class _APOTD_ScreenState extends State<APOTD_Screen> {
                                 child: Center(child: Text('Choose')),
                               ),
                             ]),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Expanded(
                             child: TabBarView(children: [
                           APODWidget(apodUrl, apodInfo),
